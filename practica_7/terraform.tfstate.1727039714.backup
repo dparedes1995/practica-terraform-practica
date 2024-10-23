@@ -1,0 +1,499 @@
+{
+  "version": 4,
+  "terraform_version": "1.9.4",
+  "serial": 100,
+  "lineage": "de0f5f21-9ff0-88f5-14c0-fa95e465a9d0",
+  "outputs": {
+    "ec2_public_ip": {
+      "value": "34.207.58.37",
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "mode": "data",
+      "type": "aws_key_pair",
+      "name": "key",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-east-1:658583055396:key-pair/mykey",
+            "create_time": "2024-09-06T02:59:38Z",
+            "filter": null,
+            "fingerprint": "c5:39:01:df:19:85:3f:20:34:a9:41:fd:b0:12:bf:1d:bd:92:98:9e",
+            "id": "key-08e23d82e98f12eab",
+            "include_public_key": false,
+            "key_name": "mykey",
+            "key_pair_id": "key-08e23d82e98f12eab",
+            "key_type": "rsa",
+            "public_key": "",
+            "tags": {},
+            "timeouts": null
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_instance",
+      "name": "public_instance",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "ami": "ami-066784287e358dad1",
+            "arn": "arn:aws:ec2:us-east-1:658583055396:instance/i-062003dae288092e5",
+            "associate_public_ip_address": true,
+            "availability_zone": "us-east-1e",
+            "capacity_reservation_specification": [
+              {
+                "capacity_reservation_preference": "open",
+                "capacity_reservation_target": []
+              }
+            ],
+            "cpu_core_count": 1,
+            "cpu_threads_per_core": 1,
+            "credit_specification": [
+              {
+                "cpu_credits": "standard"
+              }
+            ],
+            "disable_api_stop": false,
+            "disable_api_termination": false,
+            "ebs_block_device": [],
+            "ebs_optimized": false,
+            "enclave_options": [
+              {
+                "enabled": false
+              }
+            ],
+            "ephemeral_block_device": [],
+            "get_password_data": false,
+            "hibernation": false,
+            "host_id": null,
+            "host_resource_group_arn": null,
+            "iam_instance_profile": "",
+            "id": "i-062003dae288092e5",
+            "instance_initiated_shutdown_behavior": "stop",
+            "instance_state": "running",
+            "instance_type": "t2.micro",
+            "ipv6_address_count": 0,
+            "ipv6_addresses": [],
+            "key_name": "mykey",
+            "launch_template": [],
+            "maintenance_options": [
+              {
+                "auto_recovery": "default"
+              }
+            ],
+            "metadata_options": [
+              {
+                "http_endpoint": "enabled",
+                "http_put_response_hop_limit": 2,
+                "http_tokens": "required",
+                "instance_metadata_tags": "disabled"
+              }
+            ],
+            "monitoring": false,
+            "network_interface": [],
+            "outpost_arn": "",
+            "password_data": "",
+            "placement_group": "",
+            "placement_partition_number": null,
+            "primary_network_interface_id": "eni-0727fc1f700634c85",
+            "private_dns": "ip-10-10-0-52.ec2.internal",
+            "private_dns_name_options": [
+              {
+                "enable_resource_name_dns_a_record": false,
+                "enable_resource_name_dns_aaaa_record": false,
+                "hostname_type": "ip-name"
+              }
+            ],
+            "private_ip": "10.10.0.52",
+            "public_dns": "",
+            "public_ip": "34.207.58.37",
+            "root_block_device": [
+              {
+                "delete_on_termination": true,
+                "device_name": "/dev/xvda",
+                "encrypted": false,
+                "iops": 3000,
+                "kms_key_id": "",
+                "tags": {},
+                "throughput": 125,
+                "volume_id": "vol-0f21edb75a6c799d5",
+                "volume_size": 8,
+                "volume_type": "gp3"
+              }
+            ],
+            "secondary_private_ips": [],
+            "security_groups": [],
+            "source_dest_check": true,
+            "subnet_id": "subnet-04bb7a5e4a1a3fe4b",
+            "tags": null,
+            "tags_all": {
+              "IAC": "Terraform",
+              "IAC_VERSION": "1.9.4",
+              "cloud": "AWS",
+              "env": "dev",
+              "owner": "dparedes"
+            },
+            "tenancy": "default",
+            "timeouts": null,
+            "user_data": "01f37df98355eb78e8ebbf55a1466221727dde84",
+            "user_data_base64": null,
+            "user_data_replace_on_change": false,
+            "volume_tags": null,
+            "vpc_security_group_ids": [
+              "sg-03c6c1ec77beb0d7e"
+            ]
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6MTIwMDAwMDAwMDAwMCwidXBkYXRlIjo2MDAwMDAwMDAwMDB9LCJzY2hlbWFfdmVyc2lvbiI6IjEifQ==",
+          "dependencies": [
+            "aws_security_group.sg_public_subnet",
+            "aws_subnet.public_subnet",
+            "aws_vpc.vpc_virginia",
+            "data.aws_key_pair.key"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_internet_gateway",
+      "name": "igw",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-east-1:658583055396:internet-gateway/igw-0e581872b52d01e92",
+            "id": "igw-0e581872b52d01e92",
+            "owner_id": "658583055396",
+            "tags": {
+              "Name": "igw vpc virginia"
+            },
+            "tags_all": {
+              "IAC": "Terraform",
+              "IAC_VERSION": "1.9.4",
+              "Name": "igw vpc virginia",
+              "cloud": "AWS",
+              "env": "dev",
+              "owner": "dparedes"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-08aa65d9fb8de05ed"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "aws_vpc.vpc_virginia"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_route_table",
+      "name": "public_crt",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-east-1:658583055396:route-table/rtb-06f977fef6dd56d1f",
+            "id": "rtb-06f977fef6dd56d1f",
+            "owner_id": "658583055396",
+            "propagating_vgws": [],
+            "route": [
+              {
+                "carrier_gateway_id": "",
+                "cidr_block": "0.0.0.0/0",
+                "core_network_arn": "",
+                "destination_prefix_list_id": "",
+                "egress_only_gateway_id": "",
+                "gateway_id": "igw-0e581872b52d01e92",
+                "instance_id": "",
+                "ipv6_cidr_block": "",
+                "local_gateway_id": "",
+                "nat_gateway_id": "",
+                "network_interface_id": "",
+                "transit_gateway_id": "",
+                "vpc_endpoint_id": "",
+                "vpc_peering_connection_id": ""
+              }
+            ],
+            "tags": {
+              "Name": "public crt"
+            },
+            "tags_all": {
+              "IAC": "Terraform",
+              "IAC_VERSION": "1.9.4",
+              "Name": "public crt",
+              "cloud": "AWS",
+              "env": "dev",
+              "owner": "dparedes"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-08aa65d9fb8de05ed"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDAsImRlbGV0ZSI6MzAwMDAwMDAwMDAwLCJ1cGRhdGUiOjEyMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "aws_internet_gateway.igw",
+            "aws_vpc.vpc_virginia"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_route_table_association",
+      "name": "crt_public_subnet",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "gateway_id": "",
+            "id": "rtbassoc-077a67275099181ab",
+            "route_table_id": "rtb-06f977fef6dd56d1f",
+            "subnet_id": "subnet-04bb7a5e4a1a3fe4b"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_internet_gateway.igw",
+            "aws_route_table.public_crt",
+            "aws_subnet.public_subnet",
+            "aws_vpc.vpc_virginia"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_security_group",
+      "name": "sg_public_subnet",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-east-1:658583055396:security-group/sg-03c6c1ec77beb0d7e",
+            "description": "Allow SSH inbound traffic and ALL egress traffic",
+            "egress": [
+              {
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "description": "",
+                "from_port": 0,
+                "ipv6_cidr_blocks": [
+                  "::/0"
+                ],
+                "prefix_list_ids": [],
+                "protocol": "-1",
+                "security_groups": [],
+                "self": false,
+                "to_port": 0
+              }
+            ],
+            "id": "sg-03c6c1ec77beb0d7e",
+            "ingress": [
+              {
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "description": "SSH over internet",
+                "from_port": 22,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "tcp",
+                "security_groups": [],
+                "self": false,
+                "to_port": 22
+              }
+            ],
+            "name": "Public Instance SG",
+            "name_prefix": "",
+            "owner_id": "658583055396",
+            "revoke_rules_on_delete": false,
+            "tags": {
+              "Name": "Public Instance SG"
+            },
+            "tags_all": {
+              "IAC": "Terraform",
+              "IAC_VERSION": "1.9.4",
+              "Name": "Public Instance SG",
+              "cloud": "AWS",
+              "env": "dev",
+              "owner": "dparedes"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-08aa65d9fb8de05ed"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6OTAwMDAwMDAwMDAwfSwic2NoZW1hX3ZlcnNpb24iOiIxIn0=",
+          "dependencies": [
+            "aws_vpc.vpc_virginia"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_subnet",
+      "name": "private_subnet",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-east-1:658583055396:subnet/subnet-0ad31148d71cec36a",
+            "assign_ipv6_address_on_creation": false,
+            "availability_zone": "us-east-1e",
+            "availability_zone_id": "use1-az3",
+            "cidr_block": "10.10.1.0/24",
+            "customer_owned_ipv4_pool": "",
+            "enable_dns64": false,
+            "enable_resource_name_dns_a_record_on_launch": false,
+            "enable_resource_name_dns_aaaa_record_on_launch": false,
+            "id": "subnet-0ad31148d71cec36a",
+            "ipv6_cidr_block": "",
+            "ipv6_cidr_block_association_id": "",
+            "ipv6_native": false,
+            "map_customer_owned_ip_on_launch": false,
+            "map_public_ip_on_launch": false,
+            "outpost_arn": "",
+            "owner_id": "658583055396",
+            "private_dns_hostname_type_on_launch": "ip-name",
+            "tags": {
+              "Name": "private-subnet-temp1"
+            },
+            "tags_all": {
+              "IAC": "Terraform",
+              "IAC_VERSION": "1.9.4",
+              "Name": "private-subnet-temp1",
+              "cloud": "AWS",
+              "env": "dev",
+              "owner": "dparedes"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-08aa65d9fb8de05ed"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6MTIwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMSJ9",
+          "dependencies": [
+            "aws_subnet.public_subnet",
+            "aws_vpc.vpc_virginia"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_subnet",
+      "name": "public_subnet",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-east-1:658583055396:subnet/subnet-04bb7a5e4a1a3fe4b",
+            "assign_ipv6_address_on_creation": false,
+            "availability_zone": "us-east-1e",
+            "availability_zone_id": "use1-az3",
+            "cidr_block": "10.10.0.0/24",
+            "customer_owned_ipv4_pool": "",
+            "enable_dns64": false,
+            "enable_resource_name_dns_a_record_on_launch": false,
+            "enable_resource_name_dns_aaaa_record_on_launch": false,
+            "id": "subnet-04bb7a5e4a1a3fe4b",
+            "ipv6_cidr_block": "",
+            "ipv6_cidr_block_association_id": "",
+            "ipv6_native": false,
+            "map_customer_owned_ip_on_launch": false,
+            "map_public_ip_on_launch": true,
+            "outpost_arn": "",
+            "owner_id": "658583055396",
+            "private_dns_hostname_type_on_launch": "ip-name",
+            "tags": {
+              "Name": "public-subnet-temp"
+            },
+            "tags_all": {
+              "IAC": "Terraform",
+              "IAC_VERSION": "1.9.4",
+              "Name": "public-subnet-temp",
+              "cloud": "AWS",
+              "env": "dev",
+              "owner": "dparedes"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-08aa65d9fb8de05ed"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6MTIwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMSJ9",
+          "dependencies": [
+            "aws_vpc.vpc_virginia"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_vpc",
+      "name": "vpc_virginia",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-east-1:658583055396:vpc/vpc-08aa65d9fb8de05ed",
+            "assign_generated_ipv6_cidr_block": false,
+            "cidr_block": "10.10.0.0/16",
+            "default_network_acl_id": "acl-04fce0ac0e30fb154",
+            "default_route_table_id": "rtb-0a53162bf320c6000",
+            "default_security_group_id": "sg-00607e7ed110c42e9",
+            "dhcp_options_id": "dopt-0db0e2f93fada4de6",
+            "enable_classiclink": false,
+            "enable_classiclink_dns_support": false,
+            "enable_dns_hostnames": false,
+            "enable_dns_support": true,
+            "enable_network_address_usage_metrics": false,
+            "id": "vpc-08aa65d9fb8de05ed",
+            "instance_tenancy": "default",
+            "ipv4_ipam_pool_id": null,
+            "ipv4_netmask_length": null,
+            "ipv6_association_id": "",
+            "ipv6_cidr_block": "",
+            "ipv6_cidr_block_network_border_group": "",
+            "ipv6_ipam_pool_id": "",
+            "ipv6_netmask_length": 0,
+            "main_route_table_id": "rtb-0a53162bf320c6000",
+            "owner_id": "658583055396",
+            "tags": {
+              "Name": "vpc-virginia"
+            },
+            "tags_all": {
+              "IAC": "Terraform",
+              "IAC_VERSION": "1.9.4",
+              "Name": "vpc-virginia",
+              "cloud": "AWS",
+              "env": "dev",
+              "owner": "dparedes"
+            }
+          },
+          "sensitive_attributes": [],
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjEifQ=="
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}
